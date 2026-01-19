@@ -1,4 +1,4 @@
-""" -------------------------------IF CONDITION--------------------------------------------------
+ -------------------------------IF CONDITION--------------------------------------------------
 
 1. Write a Python program to check if a number is positive. 
 num = int(input("Enter the number :"))
@@ -744,14 +744,19 @@ else:
 
 55.  Validate strong password using multiple conditions.
 
+import string
 
+password = input("Enter a password: ")
 
-
-
-
-
-
-
+# Conditions
+if (len(password) >= 8 and
+    any(c.islower() for c in password) and
+    any(c.isupper() for c in password) and
+    any(c.isdigit() for c in password) and
+    any(c in string.punctuation for c in password)):
+    print("Strong password")
+else:
+    print("Weak password")
 
 
 
@@ -853,7 +858,33 @@ else:
 
 
 
-60. Create a menu-driven program using if–elif–else."""
+60. Create a menu-driven program using if–elif–else.
+
+print("===== Menu =====")
+print("1. Add")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
+
+choice = int(input("Enter your choice (1-4): "))
+
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+if choice == 1:
+    print("Result:", num1 + num2)
+elif choice == 2:
+    print("Result:", num1 - num2)
+elif choice == 3:
+    print("Result:", num1 * num2)
+elif choice == 4:
+    if num2 != 0:
+        print("Result:", num1 / num2)
+    else:
+        print("Cannot divide by zero!")
+else:
+    print("Invalid choi
+
 
 
 
