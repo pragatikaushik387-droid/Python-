@@ -1,0 +1,57 @@
+li = [1,2,3,4,5,6,7,8,9]
+player = "X"
+win = [(0,1,2),(3,4,5),(6,7,8),(0,3,6),
+       (1,4,7),(2,5,8),(0,4,8),(2,4,6)]
+flag = 0
+choices = []
+
+
+while True:
+    print("             TIC - TAC - TOE")
+    print("               ", li[0] ,"|", li[1] ,"|", li[2])
+    print("               -----------")
+    print("               ", li[3] ,"|", li[4] ,"|", li[5])
+    print("               -----------")
+    print("               ", li[6] ,"|", li[7] ,"|", li[8])
+
+    print(f"Now turn player {player}:", end = " ")
+    if flag == 1:
+        break
+
+    if choices == 9:
+        print("Match Tie Try Again !")
+        break
+    
+
+    
+    ch = int(input())
+    
+
+    if ch not in choices:
+        choices.append(ch)
+
+        
+        li[ch-1] = player
+
+        
+        for i,j,k in win:
+            if li[i]==li[j] and li[j]==li[k]:
+                print("Winner is:",player)
+                flag = 1
+            
+
+        
+        li[ch-1] = player
+
+        if player == "X":
+                player = "O"
+        else:
+                player = "X"
+
+
+    
+    else:
+        if ch in choices:
+            print("Already selected value please choose another value")
+        else:
+            print("Invalid value please select in given list")
