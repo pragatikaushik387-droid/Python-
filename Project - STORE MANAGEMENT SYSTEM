@@ -1,0 +1,352 @@
+"""
+STORE MANAGEMENT SYSTEM
+
+CUSTOMER(Cid,Cname,Cadd,Cmob)
+PRODUCT(Pid,Pname,Price,Pdesc)
+ORDERS(Cid,Pid,Qty)
+
+"""
+print("                       STORE MANAGEMENT SYSTEM")
+
+# Required Libraries for creating fucntions
+import pickle
+import os    # for rename file name(3) part
+
+
+
+
+# 1. Creating a AddCustomer function
+def AddCustomer():
+    file = open("customer.bin",'ab')
+    Cid = input("Enter Customer ID:")
+    Cname = input("Enter Customer Name:")
+    Cadd = input("Enter Customer Add:")
+    Cmob = input("Enter Customer Mob:")
+
+    pickle.dump(Cid,file)   # dump/write data in file
+    pickle.dump(Cname,file)
+    pickle.dump(Cadd,file)
+    pickle.dump(Cmob,file)
+
+    print("Customer Add Successfully")
+    input("Press Enter to be continue...")
+    
+        
+    file.close()
+
+
+
+
+# 2. Creating a ViewAllCustomer function
+
+def ViewAllCustomer():
+    file = open("customer.bin",'rb')
+    try:
+        print("Cid\tCname\tCadd\tCmob")
+        while True:
+            for i in range(4):
+                data = pickle.load(file)
+                print(data, end = "\t")  # for data in tabular form or correct sequence
+            print()
+    except:
+        pass
+
+    file.close()
+    
+    print("There is all Customers")
+    input("Press Enter to be continue...")
+        
+# 3. Creating a DelCus function for delete one customer details.
+
+def DelCus():
+    file_1 = open("customer.bin",'rb')
+    file_2 = open("temp.bin",'wb')
+    Cid = input("Enter Customer ID for delete:")
+
+    try:
+        while True:
+            data = pickle.load(file_1)
+            if data == Cid:
+                pickle.load(file_1)
+                pickle.load(file_1)
+                pickle.load(file_1)
+                
+            else:
+                pickle.dump(data,file_2)
+    except:
+        pass
+            
+    
+    file_1.close()
+    file_2.close()
+    os.remove("customer.bin")
+    os.rename("temp.bin","customer.bin")
+    
+    print("Customer Deleted Succesfully")
+    input("Press Enter to be continue...")
+
+
+
+# 4.Creating a AddPro function.
+def AddPro():
+    file = open("product.bin",'ab')
+    Pid = input("Enter  Product ID:")
+    Pname = input("Enter Product Name:")
+    Price = input("Enter Product Price:")
+    Pdesc = input("Enter product desc:")
+
+    pickle.dump(Pid,file)   # dump/write data in file
+    pickle.dump(Pname,file)
+    pickle.dump(Price,file)
+    pickle.dump(Pdesc,file)
+    
+    file.close()
+
+    print("Product Added Succesfully")
+    input("Press Enter to be continue...")
+
+
+
+
+# 5. Creating a ViewAllPro function.
+def ViewAllPro():
+    file = open("product.bin", 'rb')
+    try:
+        print("Pid\tPname\tPrice\tPdesc")
+        while True:
+            for i in range(4):
+                data_ = pickle.load(file)
+                print(data_, end = "\t")  # for data in tabular form or correct sequence
+            print()
+    except:
+        pass
+    
+    file.close()
+    print("There are all products")
+    input("Press Enter to be continue...")
+
+
+
+
+# 6. Creating a uppro function.
+def uppro():
+    file1 = open("product.bin",'rb')
+    file2 = open("temp_.bin",'ab')
+    Pid = input("Enter Product Id for update:")
+    try:
+        while True:
+            data = pickle.load(file1)
+            if Pid == data:
+                pickle.dump(data,file2)
+                
+                name = pickle.load(file1)
+                print("Current Name:", name)
+                pickle.dump(name,file2)
+                
+                pickle.load(file1)   # price padhega
+                price = input("Enter New Price for Update:")
+                pickle.dump(price,file2)
+                
+                desc = pickle.load(file1) # desc of product
+                pickle.dump(desc,file2)
+                
+            else:
+                pickle.dump(data,file2)
+    except:
+        pass
+    
+    file1.close()
+    file2.close()
+    os.remove("product.bin")
+    os.rename("temp_.bin","product.bin")
+
+    print("product Price updated succesfully")
+    input("Press Enter to be continue...")
+
+
+# A method to get customer details
+def getCustDetail(Cid):
+    cus = []
+    file = open("customer.bin",'rb')
+    try:
+        while True:
+            daata = pickle.load(file)
+            if daata == Cid:
+                cus.append(daata)
+                for i in range(3):
+                    cus.append(pickle.load(file))
+    except:
+        pass
+                 
+    file.close()
+    return cus
+
+
+
+#  A method to get customer details
+def getProductDetail(pid):
+    pro = []
+    file = open("product.bin",'rb')
+    try:
+        while True:
+            data = pickle.load(file)
+            if data == pid:
+                pro.append(data)
+                for i in range(3):
+                    pro.append(pickle.load(file))
+    except:
+        pass
+                 
+    file.close()
+    return pro
+
+
+
+
+
+
+# 7. Creating a PlaceOrder function.
+def PlaceOrder():
+    cid = input("Enter Customer ID:")
+    cus = getCustDetail(cid)
+    print(cus)
+    if len(cus) != 0:
+        print("Customer Name:",cus[1])
+        print("Customer Address:",cus[2])
+        pid = input("Enter Product ID:")
+        pro = getProductDetail(pid)
+        if len(pro) != 0:
+            print("Product Name:",pro[1])
+            print("Product Price:",pro[2])
+            print("Product Desc:",pro[3])
+            qty = input("Enter the quantity of product:")
+            print("Total Bill:",float(qty) * float(pro[2]))
+
+            file = open("orders.bin",'ab')     # Creating a new enity for saving order details in table
+            pickle.dump(cid,file)
+            pickle.dump(pid,file)
+            pickle.dump(qty,file)
+            print("Order placed successfully")
+            
+            file.close()
+            
+        else:
+            print("Product not found")
+    else:
+        print("Customer not found")
+
+
+    input("Press Enter to be continue...")
+
+
+
+
+# 8. Creating a ViewOrders function.
+def ViewOrders():
+    file = open("orders.bin", 'rb')
+    try:
+        print("Cid\tPid\tQty")
+        while True:
+            for i in range(3):
+                data = pickle.load(file)
+                print(data, end = "\t")  # for data in tabular form or correct sequence
+            print()
+    except:
+        pass
+
+
+    
+    file.close()
+
+    print("There are all orders")
+    input("Press Enter to be continue...")
+
+
+
+
+
+# 9. Creating a ViewOrderByCID function.
+def ViewOrderByCID():
+    Cid = input("Enter Customer ID:")
+    cus = getCustDetail(Cid)
+    if len(cus) != 0:
+        try:
+            file = open("orders.bin",'rb')
+            print("Cid\tPid\tQty")
+            while True:
+                cid = pickle.load(file)
+                pid = pickle.load(file)
+                qty = pickle.load(file)
+
+                if cid == Cid:
+                    print(cid, "\t", pid, "\t", qty)
+
+        except:
+             pass
+    else:
+        print("Cutsomer not found")
+
+    input("Press Enter to be continue...")
+
+
+
+
+
+
+
+
+while True:
+    print("""\t 1. Add Customer
+             2. View allCustomer
+             3. Delete Customer
+             4. Add Product
+             5. View all Products
+             6. Update Product
+             7. Place an Order
+             8. View all Orders
+             9. View orders of a customer
+             0. Exit""")
+
+    ch = int(input("Enter your Choice please:"))
+    #-----------------------------functional part--------------
+    
+    if ch == 0:
+        print("Exit : Try Again! \nThanks for Visiting our portal")
+        break
+
+    elif ch == 1:
+        AddCustomer()
+
+    elif ch == 2:
+        ViewAllCustomer()
+
+    elif ch == 3:
+        DelCus()
+
+    elif ch == 4:
+        AddPro()
+
+    elif ch == 5:
+        ViewAllPro()
+
+    elif ch == 6:
+        uppro()
+
+    elif ch == 7:
+        PlaceOrder()
+
+    elif ch == 8:
+        ViewOrders()
+
+    elif ch == 9:
+        ViewOrderByCID()
+
+    else:
+        print("Wrong choice")
+        break
+
+    
+        
+
+    
+           
