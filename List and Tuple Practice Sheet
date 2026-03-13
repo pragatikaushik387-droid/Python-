@@ -1,0 +1,472 @@
+------------------------------------BASIC LEVEL----------------------------------
+
+1. Write a Python program to create a list of integers and print its elements.
+l = [1,2,3,4,5,67,78,90,7,100,70]
+for i in l:
+    print(i)
+
+2. Write a program to find the sum and average of all elements in a list.
+l = [7200,7800,12000,6500,7000,9000]
+print(l)
+total = sum(l)
+print("sum is :",total)
+
+average = total/len(l)
+print("average is :", average)
+
+
+3. Write a program to find the largest and smallest element in a list.
+l = [7200,7800,12000,6500,7000,9000,20000]
+smaller = l[0]
+larger = l[0]
+for i in l:
+    if i > larger:
+        larger = i
+    if i < smaller :
+        smaller = i
+print(l)
+print("larger number is :",larger)
+print("smallest number is :",smaller)
+    
+
+4.Write a Python program to count the number of elements in a list without
+using len(). 
+l = [4,85,99,75,63,82,41,7,88,96]
+count = 0
+for i in l:
+    
+    count = count + 1
+print(count)
+
+
+5.Write a program to reverse a list without using built-in functions.
+l = [1,2,86,93,88,74]
+last_indx = len(l) - 1
+for i in range(last_indx,-1,-1):
+    print(l[i])
+
+
+6. Write a program to check if an element exists in a list.
+l = [23,55,63,99,77,56,1]
+a = int(input("Enter the number for check:"))
+flag = False
+for i in l:
+    
+    if i  == a:
+        flag = True
+    
+if flag == True:
+    print("This element is present in given list")
+elif flag == False:
+    print("This element is not present in given list")
+
+
+7. Write a Python program to remove duplicate elements from a list.
+l = [88,99,55,66,33,88,66,52,99,99,33,88]
+def rem_dup(l):
+    unique_li = []
+    for i in l:
+        if i not in unique_li:
+            unique_li.append(i)
+    return unique_li
+            
+a = rem_dup(l)
+print(a)
+
+
+
+8. Write a program to sort a list in ascending and descending order.\
+l = [7,88,99,101,1,5,100,0]
+l.sort()
+print("Ascending Order list:",l)
+l.sort(reverse = True)
+print("Descending Order list:",l)
+
+
+
+
+
+----------------------------------------INTERMEDIARTE LEVEL--------------------
+
+9. Write a program to merge two lists and remove duplicates.
+L1 = [7,88,99,101,1,5,100,0,88,101]
+L2 = [88,99,55,66,33,88,66,52,99,99,33,88]
+
+L3 = L1 + L2
+print("Duplicate included list:",L3)
+
+def rem_dup(L3):
+    unique_li = []
+    for i in L3:
+        if i not in unique_li:
+            unique_li.append(i)
+    return unique_li
+            
+a = rem_dup(L3)
+print("Duplicate not included list:",a)
+
+
+10. Write a program to find common elements between two lists. 
+
+L1 = [7,88,99,101,1,5,100,0,88,101,33,88,66,55]
+L2 = [88,99,55,66,33,88,66,52,99,99,33,88]
+
+
+common_li = []
+for i in L1:
+    if i in L2 and i not in common_li:
+            common_li.append(i)
+    
+        
+print("Common elements:",common_li)
+
+
+
+11. Write a program to split a list into even and odd numbers.
+L1 = [1,2,5,6,4,7,8,9,99,55,44,74,66,63,52,50,500]
+even = []
+odd = []
+for i in L1:
+    if i % 2 == 0:
+        even.append(i)
+    else:
+        odd.append(i)
+print("Even list:",even)
+print("Odd list:",odd)
+
+
+
+12. Write a program to rotate a list by n positions. 
+L = [1, 2, 3, 4, 5]
+n = int(input("Enter number of positions to rotate: "))
+
+# Right rotate
+right_rotated = L[-n:] + L[:-n]
+
+# Left rotate
+left_rotated = L[n:] + L[:n]
+
+print("Original list:", L)
+print(f"List after right rotate by {n} positions:", right_rotated)
+print(f"List after left rotate by {n} positions:", left_rotated)
+
+
+13. Write a Python program to find the second largest number in a list.
+l = [7,88,99,101,1,5,100,0]
+l.sort(reverse = True)
+print("Descending Order list:",l)
+print(l[1])
+
+
+14. Write a program to flatten a nested list.
+
+l = [7, 88, 99, [1, 2], 101, 1, 5, [8], 100, 0, [22, 69]]
+
+def flatten(lst):
+    result = []                 
+    for item in lst:            
+        if type(item) == list:  
+            result.extend(flatten(item))  
+        else:                   
+            result.append(item) 
+    return result
+
+
+flat_list = flatten(l)
+
+print("Flattened list:", flat_list)
+
+
+
+
+
+
+
+15. Write a program to count frequency of each element in a list.
+l = [7,88,99,101,1,5,100,0,88,101,33,88,66,55]
+freq = {}
+for i in l:
+    if i in freq:
+        freq[i] = freq[i] +1
+    else:
+        freq[i] = 1
+print(freq)
+
+
+16. Write a program to replace all negative numbers with zero in a list.
+l = [1,2,3,-88,44,-55,89,-22,-66,-36]
+li=[]
+for i in l:
+    if i < 0:
+        li.append(0)
+    else:
+        li.append(i)
+        
+print(li)
+
+
+-------------------------------------------ADVANCE LEVEL--------------------------
+
+
+17.Write a program to remove all occurrences of a given element from a list. 
+L = [1,2,3,2,4,2,5]
+new = []    
+u = int(input("Enter one number in given list for remove:"))
+
+for i in L:
+    if i != u:
+        new.append(i)
+    else:
+        pass
+print(new)
+
+
+18.Write a program to check if a list is a palindrome.
+l = [1,2,3,2,1]
+flag = True
+
+for i in range(len(l)//2):
+    if l[i] != l[-i-1]:
+        flag = False
+        break
+if flag:
+    print("List is a palindrome")
+else:
+    print("List is not a palindrome")
+
+
+19. Write a Python program to find missing numbers in a given list of
+consecutive integers.
+l = [1,2,3,5,6,8,10,12,15]
+missing = []
+a = min(l)
+print("Min number is :",a)
+b = max(l)
+print("Max number is :",b)
+
+for i in range(a,b):
+    if i not in l:
+        missing.append(i)
+print("Missing list is :",missing)
+
+
+20. Write a program to perform element-wise addition of two lists.
+L1 = [1,2,3,5,6,8,10,12,15]
+L2 = [1,2,3,5,6,8,10,12,15]
+L3 = []
+for i in range (len(L1)):
+    a = L1[i] + L2 [i]
+    L3.append(a)
+    
+print(L3)
+
+
+
+21. Write a Python program to find the longest increasing subsequence in a list.
+arr = [10, 22, 9, 33, 21, 50, 41, 60]
+dp = [1] * len(arr)
+for i in range(1, len(arr)):
+    for j in range(0, i):
+        if arr[i] > arr[j]:
+            dp[i] = max(dp[i], dp[j] + 1)
+max_length = max(dp)
+print(max_length)
+
+
+
+
+
+
+
+22. Write a program to group elements based on frequency.
+l = [1, 101, 2, 3, 100, 4, 5]
+dp = [1] * len(l)
+
+for i in range(1, len(l)):
+    for j in range(i):
+        if l[i] > l[j]:
+            dp[i] = max(dp[i], dp[j] + 1)
+
+length_lis = max(dp)
+print("Length of Longest Increasing Subsequence:", length_lis)
+
+
+--------------Python Programming Questions – TUPLE Basic Level--------------------
+
+23. Write a Python program to create a tuple and print its elements.
+t = (1,2,3,4,5,6,7,8,9,10)
+print(t)
+
+
+
+24. Write a program to find the length of a tuple.
+t = (1,2,3,4,5,6,7,8,9,10)
+a = len(t)
+print(a)
+
+
+#25. Write a program to find the maximum and minimum element in a tuple.
+t = (1,2,3,455,5,6,77,8,9,10)
+a = max(t)
+print("Maximum element is :",a)
+b = min(t)
+print("Minimum element is :",b)
+
+
+26. Write a program to convert a tuple into a list.
+t = (1,2,3,455,5,6,77,8,9,10)
+a = list(t)
+print(a)
+
+
+
+#27. Write a program to check if an element exists in a tuple.
+t = (1,2,3,455,5,6,77,8,9,10)
+a = int(input("Enter the number:"))
+for i in t:
+    if i == a:
+        print("Element Present")
+        break
+else:
+    print("Not Present")
+
+
+
+#28. Write a program to count occurrences of an element in a tuple.
+t = (1,2,3,455,5,6,77,8,9,10,5,455)
+a = int(input("Enter number :"))
+count = 0
+
+for i in t:
+    if i == a:
+        count = count + 1
+print("Occurance is :",count)
+    
+
+
+29. Write a program to slice a tuple and display the result.
+t = (1,2,3,455,5,6,77,8,9,10,5,455)
+print(t)
+print(t[2:6])
+print(t[3:7])
+
+
+
+#30. Write a program to find repeated elements in a tuple.
+t = (1,2,3,455,5,6,77,8,2,9,10,5,455,1,3)
+l = []
+for i in t:
+    if t.count(i) > 1 and i not in l:
+        l.append(i)
+print(l)
+
+
+
+
+#31. Write a program to merge two tuples.
+t1 = (1,2,3,455,5,6)
+t2 = (7,8,9,10,12,11,13)
+a = t1 + t2
+print(a)
+
+
+
+#32. Write a program to unpack elements of a tuple into variables.
+t = (1,2,3,455)
+a = t[0]
+b = t[1]
+c = t[2]
+d = t[3]
+print(a)
+print(b)
+print(c)
+print(d)
+
+
+
+
+#33. Write a Python program to sort a tuple.
+t = (1,2,3,455,5,6,77,8,2,9,10,5,455,1,3)
+a = list(t)
+a.sort(reverse = True)
+print(tuple(a))
+
+
+
+#34. Write a program to convert a list of tuples into a dictionary.
+t = [(1,'a'),(2,'b'),(3,'c'),(4,4)]
+a = dict(t)
+print(a)
+
+
+
+35. Write a program to find the index of an element in a tuple.
+t = (1,2,3,455,5,6,77,8,2,9,10,5,455,1,3)
+a = int(input("Enter the number for finding indx number:"))
+
+b = t.index(a)
+print("index is :",b)
+
+
+
+#36. Write a program to remove an element from a tuple (without directly modifying it).
+t = (1,2,3,455,5,6,77,8,2,9,10,5,455,1,3)
+u = int(input("Enter the number:"))
+a = list(t)
+print(a)
+a.remove(u)
+print(tuple(a))
+
+
+
+#37. Write a program to find common elements between two tuples.
+t1 = (1,2,3,11,455,9,5,6,2,7)
+t2 = (7,8,9,10,12,11,13,1,3)
+l = []
+for i in t1:
+    if i in t2:
+        l.append(i)
+print(l)
+
+
+
+#38. Write a Python program to check if a tuple is a palindrome.
+t = (1,2,3,2,1)
+reverse = t[::-1]
+print(reverse)
+if t == reverse:
+    print("Palindrome")
+else:
+    print("Not Palindrome")
+
+
+
+#39. Write a program to find the element with maximum frequency in a tuple.
+t = (1,2,3,11,455,9,5,6,2,7,100,100,100)
+max_freq = 0
+max_element = None
+
+for i in t:
+    freq = t.count(i)          
+    if freq > max_freq:        
+        max_freq = freq       
+        max_element = i        
+
+print("Element with maximum frequency:", max_element)
+print("Maximum frequency:", max_freq)
+
+
+
+
+#40. Write a program to create a nested tuple and access its elements.
+t = (1,2,(3,11),455,9,5,(6),2,7,(100,100),100,(56,95))
+for i in t:
+    if type(i) == tuple:
+        for j in i:
+            print(j)
+    else:
+        print(i)
+
+
+
+
