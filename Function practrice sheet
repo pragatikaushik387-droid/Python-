@@ -1,0 +1,442 @@
+------------------------Questions on def (Functions)-------------------------------------
+-----------------------------------Basic Questions------------------------------------------
+#1. Write a function to add two numbers.
+def add(a,b):
+    return (a+b)
+    
+print(add(3,7))
+
+
+#2. Write a function to find square of a number.
+def sqr(num):
+   return num * num
+
+print(sqr(3))
+print(sqr(7))
+
+
+#3. Write a function to check even or odd.
+def is_even(a):
+    if a % 2 == 0:
+        return True
+    else:
+       return False
+
+
+def is_odd(b):
+    if b % 2 != 0:
+        return True
+    else:
+       return False
+
+print(is_odd(67))
+print(is_even(66))
+print(is_even(69))
+print(is_even(77))
+
+
+
+
+#4. Write a function to find maximum of two numbers.
+def max_no(a,b):
+    if a>b:
+        return a
+    else:
+        return b
+print("Maximum number is :",max_no(66,78))
+
+
+
+#5. Write a function to count vowels in a string.
+def count_vowels(s):
+    vowels = 'aeiouAEIOU'
+    count = 0
+    for i in s:
+        if i in vowels:
+            count = count + 1
+    return count
+
+print("Total count of vowels is:",count_vowels("pragati kaushik"))
+
+
+#6. Write a function to check palindrome string.
+def palindrome_st(s):
+    reversed_st = s[: :-1]
+    if s == reversed_st:
+        return "Palindrome"
+    else:
+        return "Not Palindrome"
+    
+
+print("This string is: ",palindrome_st("ujju"))
+print("This string is: ",palindrome_st("radhe"))
+print("This string is: ",palindrome_st("Prachi"))
+
+
+
+#7. Write a function to find factorial of a number.
+def factorial(num):
+    fact = 1
+    for i in range(1,num+1):
+        fact = fact * i
+    return fact
+print("factorial is:",factorial(5))
+        
+
+
+#8. Write a function to return second largest number from a list.
+def sec_larg(lst):
+    largest = max(lst)
+    second = float('-inf')
+    for i in lst:
+        if i< largest and i > second:
+            second = i
+    return second
+
+print("Second largest number is :",sec_larg([1,88,9,66,96,200]))
+    
+    
+    
+
+#9. Write a function to remove duplicates from a list.
+def remove_dup(lst):
+    unique = []
+    for i in lst:
+        if i not in unique:
+            unique.append(i)
+    return unique
+    
+print("unique list is:",remove_dup([1,2,2,3,5,3,1,89]))
+
+
+#10. Write a function to calculate Fibonacci series.
+def fibbo(num):
+    fib_series = []
+    if num >= 1:
+        fib_series.append(0)
+    if num >= 2:
+        fib_series.append(1)
+        
+    for i in range(2,num):
+        next_term = fib_series[-1] + fib_series[-2]
+        fib_series.append(next_term)
+    return fib_series
+
+
+print("Fibbonacci series is:",fibbo(5))
+
+
+---------------------------------Advanced Questions----------------------------------
+11. Write a recursive function for factorial.
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+print("Factorial is :",factorial(5))
+
+
+
+
+#12. Write a function to check prime number.
+def check_prime(num):
+    
+    if num <= 1:
+        return False
+    for i in range(2,num-1):
+        if num % i == 0:
+            return False
+    return True
+        
+
+print(check_prime(21))
+print(check_prime(17))
+
+#13. Write a function to find GCD of two numbers.
+def gcd(a,b):
+    min_val = min(a,b)
+    for i in range(1,min_val+1):
+        if a % i == 0 and b % i == 0:
+            gcd = i
+    return gcd
+print(gcd(24,36))
+print(gcd(12,18))
+            
+
+
+
+#14. Write a function to count frequency of characters in a string.
+def count_freq(st):
+    freq = {}
+    for i in st:
+        if i in freq :
+            freq[i] = freq[i] + 1
+        else:
+            freq[i] = 1
+    return freq
+
+print("Frequency of string is :",count_freq("Python is my favourite language"))
+print("Frequency of string is :",count_freq("Hello"))
+          
+
+
+
+#15. Write a function that accepts any number of arguments and returns sum.
+def sum_all(*args):
+    total = 0
+    for num in args:
+        total = total + num
+    return total
+print(sum_all(2,5,7,100))
+
+
+-------------------------------- Questions on lambda--------------------------------
+#1. Write a lambda function to add two numbers.
+add = lambda x,y : x+y
+print(add(3,4))
+
+
+
+
+#2. Write a lambda function to check even number.
+even = lambda num : num % 2 == 0
+print(even(26))
+print(even(55))
+print(even(101))
+print(even(200))
+
+
+#3. Write a lambda function to find maximum of two numbers.
+
+max_num = lambda a,b : a if a>b else b
+print(max_num(5,6))
+print(max_num(55,101))
+print(max_num(201,6))
+
+
+
+
+#4. Write a lambda to return square of a number.
+sqr = lambda num : num * num
+print(sqr(5))
+print(sqr(8))
+print(sqr(10))
+print(sqr(2))
+
+
+
+#5. Write a lambda to return "Pass" if marks > 40 else "Fail".
+result = lambda marks: 'Pass' if marks > 40 else 'Fail'
+print(result(55))
+print(result(25))
+print(result(99))
+print(result(10))
+
+
+
+
+-----------------------------Questions on map()--------------------------------------
+#1. Use map() to square all elements in a list.
+a = [1,2,3,4,5]
+sqr = list(map(lambda x: x*x,a))
+print(sqr)
+
+
+
+#2. Use map() to convert list of strings into uppercase.
+l = ['Apple','Mango','Lichi','Papaya','Milon','Grapes']
+upp = list(map(lambda x: x.upper(),l))
+print(upp)
+
+
+#3. Use map() to convert list of strings into integers.
+l = ['1','2','3','4','5','6','7','8','9','10','11']
+result = list(map(lambda x: int(x),l))
+print(result)
+
+
+#4. Use map() to add elements of two lists.
+L1 = ['1','2','3','4','5']
+L2 = ['6','7','8','9','10']
+add = list(map(lambda x,y: int(x) + int(y),L1,L2))
+print(add)
+
+
+
+
+#5. Use map() to find length of each word in a list.
+l = ['Apple','Mango','Lichi','Papaya','Milon','Grapes']
+leng = list(map(lambda x: len(x), l))
+print(leng)
+
+
+
+
+---------------------------------Questions on filter()--------------------------------
+
+1. Use filter() to get even numbers from a list.
+l = [55,101,22,36,35,96]
+even = list(filter(lambda num : num % 2 == 0,l))
+print(even)
+
+
+#2. Use filter() to get odd numbers from a list.
+l = [55,101,22,36,35,96]
+odd = list(filter(lambda num: num %2 != 0,l))
+print(odd)
+
+
+
+
+#3. Use filter() to get numbers greater than 50.
+l = [55,101,22,10,56,36,35,96]
+great = list(filter(lambda x: x>50,l))
+print(great)
+
+
+
+#4. Use filter() to get words starting with vowel.
+l = ['raman','apple','elephant','iron','orange','umbrella','zebra','lion','raja']
+vowel = list(filter(lambda x: x[0] in 'aeiou',l))
+print(vowel)
+
+
+#5. Use filter() to get prime numbers from a list.
+l = [27,13,5,96,85,89,57,100,50]
+prime = list(filter(lambda x: x>1 and all(x % i != 0 for i in range(2, x)),l ))
+print(prime)
+
+
+
+-----------------------------------Questions on reduce()-------------------------------------
+
+1. Use reduce() to find sum of elements in a list.
+from functools import reduce
+l = [1,2,3,4,5,6,7,8,9,10,11]
+sum_of_list = reduce(lambda x,y : x+y ,l)
+print(sum_of_list)
+
+#2. Use reduce() to find product of elements in a list.
+from functools import reduce
+l = [1,2,3,4,5,6,7,8,9,10,11]
+multi = reduce(lambda x,y : x*y,l)
+print(multi)
+
+
+
+#3. Use reduce() to find maximum element in a list.
+from functools import reduce
+l = [11,222,38,4,5,6,70,8,89,1000,11]
+max_el = reduce(lambda a,b: a if a>b else b,l)
+print(max_el)
+
+
+#4. Use reduce() to concatenate a list of strings.
+from functools import reduce
+l = ['raman','apple','elephant','iron','orange','umbrella','zebra','lion','raja']
+conct = reduce(lambda x,y: x +y ,l)
+print(conct)
+
+
+
+#5. Use reduce() to flatten a list of lists.
+from functools import reduce
+l = [[1,2,3],[4,5,6],[7,8]] 
+flatten = reduce(lambda x,y: x +y ,l)
+print(flatten)
+
+
+
+
+
+-------------------------- Mixed Practice Question---------------------------------
+
+#1. Use map() and lambda to square all numbers in a list.
+l = [11,222,38,4,5,6,70,8,89,1000,11]
+sqr = list(map(lambda num : num * num ,l))
+print(sqr)
+
+
+
+#2. Use filter() and lambda to get numbers greater than 10.
+l = [1,222,3,4,5,6,7,8,89,1000,11]
+gre = list(filter(lambda x: x<10,l))
+print(gre)
+
+
+
+#3. Use map() and filter() to square only even numbers.
+l = [1,222,3,4,5,6,7,8,89,1000,11]
+sqr = list(map(lambda x: x * x,filter( lambda x : x % 2 ==0,l)))
+print(sqr)
+
+
+
+#4. Use reduce() to find factorial of a number.
+from functools import reduce
+l=[1,2,3,4,5,6,7]
+fact = reduce(lambda x,y : x*y ,l)
+print(fact)
+
+
+#5. From a list, remove duplicates and return only even numbers.
+l=[1,2,3,4,5,6,7,1,4,6,9,8,8]
+s = list(set(l))
+even = list(filter(lambda x: x%2==0,s))
+print(even)
+
+
+
+--------------------------------Interview Basics-------------------------------------
+1. Difference between def and lambda.
+def :- It creates a named function with multiple statements.
+
+lambda :- It is an anonymous single-line function
+
+
+
+#2. Difference between map() and filter().
+map():- It applies a function to all elements of an iterable and returns
+the transformed values.
+
+filter() :- It applies a function to all elements of an iterable and returns
+the transformed values.
+
+
+
+#3. Difference between filter() and list comprehension.
+filter() :- returns elements of an iterable that satisfy a condition using a function.
+
+list comprehension :- It can filter and transform elements in a single, more flexible
+expression.
+
+
+
+
+#4. Why reduce() is not a built-in function in Python?
+--> It reduce() is not a built-in in Python 3 because its use is less common and can
+be replaced by clearer loops or comprehensions.
+
+--> it’s available in the functools module.
+
+
+
+
+
+#5. Can lambda have multiple statements?
+No, a lambda in Python can have only a single expression,
+not multiple statements.
+
+
+
+
+
+
+
+
+
+
+
+
+
